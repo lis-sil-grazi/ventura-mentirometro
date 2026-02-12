@@ -9,6 +9,8 @@
 <meta name="robots" content="index, follow">
 <meta name="author" content="Mentirómetro do Ventura">
 <link rel="canonical" href="https://mentirometroventura.eu/">
+<link rel="alternate" hreflang="pt" href="https://mentirometroventura.eu/">
+<link rel="alternate" hreflang="x-default" href="https://mentirometroventura.eu/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -28,7 +30,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--red:#c0392b;--dark-red:#922b21;--bg:#faf6f1;--dark:#2c2c2c;--card:#fff;--accent:#e74c3c;--gold:#f39c12;--green:#27ae60;--purple:#8e44ad;--blue:#2980b9;--insta:#E4405F}
+:root{--red:#c0392b;--dark-red:#922b21;--bg:#faf6f1;--dark:#2c2c2c;--card:#fff;--accent:#e74c3c;--gold:#f39c12;--green:#27ae60;--purple:#8e44ad;--blue:#2980b9}
 body{font-family:'Inter','Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--dark);line-height:1.7}
 a{color:var(--red);text-decoration:none;transition:.2s}
 a:hover{text-decoration:underline}
@@ -64,7 +66,7 @@ section h2{font-size:1.8rem;font-weight:900;color:var(--dark-red);margin-bottom:
 section > .section-intro{color:#666;margin-bottom:1.5rem;font-size:1.05rem}
 
 /* Cards */
-.card{background:var(--card);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid var(--accent);transition:transform .2s,box-shadow .2s;position:relative}
+.card{background:var(--card);border-radius:16px;padding:1.8rem;margin-bottom:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid var(--accent);transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.1)}
 .card .badge{display:inline-block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;padding:.25rem .75rem;border-radius:20px;margin-bottom:.8rem}
 .badge.falso{background:#fde8e8;color:var(--accent)}
@@ -73,7 +75,7 @@ section > .section-intro{color:#666;margin-bottom:1.5rem;font-size:1.05rem}
 .badge.hipocrisia{background:#f4ecf7;color:var(--purple)}
 .badge.falsa-equivalencia{background:#fff3e0;color:#e65100}
 .card .date-tag{float:right;font-size:.72rem;color:#999;font-weight:600}
-.card .claim{font-size:1.15rem;font-weight:700;color:var(--dark);margin-bottom:.6rem;position:relative;padding-left:1.8rem;padding-right:1.8rem}
+.card .claim{font-size:1.15rem;font-weight:700;color:var(--dark);margin-bottom:.6rem;position:relative;padding-left:1.8rem}
 .card .claim::before{content:'🗣️';position:absolute;left:0;top:0}
 .card .reality{background:#f0fdf4;border-radius:10px;padding:1rem 1.2rem;margin:.8rem 0;border:1px solid #bbf7d0}
 .card .reality::before{content:'✅ Realidade: ';font-weight:700;color:var(--green)}
@@ -83,39 +85,8 @@ section > .section-intro{color:#666;margin-bottom:1.5rem;font-size:1.05rem}
 .card .source::before{content:'📎 '}
 .card .commentary{font-style:italic;color:#666;margin-top:.6rem;font-size:.93rem;padding-left:1rem;border-left:3px solid #e0d6cc}
 
-/* Card Actions */
-.card-actions{display:flex;gap:.6rem;margin-top:1.2rem;padding-top:1rem;border-top:1px solid #e8e4df;align-items:center}
-.share-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:.4rem;
-  padding:.5rem 1rem;
-  background:linear-gradient(135deg,#E4405F 0%,#E1306C 100%);
-  color:#fff;
-  border:none;
-  border-radius:20px;
-  font-size:.75rem;
-  font-weight:600;
-  cursor:pointer;
-  transition:all .2s;
-  text-decoration:none;
-}
-.share-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 6px 16px rgba(228,64,95,.3);
-}
-.share-btn:active{
-  transform:translateY(0);
-}
-.share-btn svg{width:16px;height:16px}
-.share-count{
-  font-size:.75rem;
-  color:#999;
-  margin-left:auto;
-}
-
 /* Contradições grid */
-.contradiction{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem;background:var(--card);border-radius:16px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s;position:relative}
+.contradiction{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;margin-bottom:1.5rem;background:var(--card);border-radius:16px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s}
 .contradiction:hover{transform:translateY(-2px)}
 .contradiction .said,.contradiction .did{padding:1rem;border-radius:10px}
 .contradiction .said{background:#fde8e8;text-align:right}
@@ -123,144 +94,509 @@ section > .section-intro{color:#666;margin-bottom:1.5rem;font-size:1.05rem}
 .contradiction .said h4{color:var(--accent);margin-bottom:.4rem}
 .contradiction .did h4{color:var(--green);margin-bottom:.4rem}
 .contradiction .vs{font-size:1.8rem;font-weight:900;color:var(--gold);text-shadow:0 2px 6px rgba(0,0,0,.1)}
-.contradiction-actions{grid-column:1/-1;margin-top:1rem;padding-top:1rem;border-top:1px solid #e8e4df}
-.contradiction-actions .share-btn{width:100%}
-@media(max-width:640px){
-  .contradiction{grid-template-columns:1fr;text-align:center}
-  .contradiction .said,.contradiction .did{text-align:center}
-  .contradiction .vs{margin:0 auto}
-}
+@media(max-width:640px){.contradiction{grid-template-columns:1fr;text-align:center}.contradiction .said,.contradiction .did{text-align:center}.contradiction .vs{margin:0 auto}}
 
 /* Escândalos */
-.scandal{background:var(--card);border-radius:16px;padding:1.5rem 1.8rem;margin-bottom:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid var(--purple);transition:transform .2s;position:relative}
+.scandal{background:var(--card);border-radius:16px;padding:1.5rem 1.8rem;margin-bottom:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid var(--purple);transition:transform .2s}
 .scandal:hover{transform:translateY(-2px)}
-.scandal h3{color:var(--purple);margin-bottom:.4rem;font-weight:700}
-.scandal .date{font-size:.75rem;color:#999;margin-bottom:.6rem}
-.scandal p{margin-bottom:.6rem;color:#333}
-.scandal-actions{margin-top:1rem;padding-top:1rem;border-top:1px solid #e8e4df}
-.scandal-actions .share-btn{display:inline-flex;width:auto}
+.scandal h3{font-size:1.05rem;font-weight:700;color:var(--purple);margin-bottom:.5rem}
+.scandal h3::before{content:'⚠️ '}
+.scandal p{color:#555;font-size:.95rem}
 
-/* Share Modal */
-.share-modal{
-  display:none;
-  position:fixed;
-  top:0;left:0;right:0;bottom:0;
-  background:rgba(0,0,0,.5);
-  z-index:1000;
-  align-items:center;
-  justify-content:center;
-  animation:fadeIn .2s
-}
-.share-modal.active{display:flex}
-.share-modal-content{
-  background:#fff;
-  border-radius:20px;
-  padding:2rem;
-  max-width:500px;
-  width:90%;
-  box-shadow:0 20px 60px rgba(0,0,0,.2);
-  animation:slideUp .3s;
-  position:relative
-}
-.share-modal h3{font-size:1.3rem;margin-bottom:1rem;color:var(--dark)}
-.share-modal .claim-preview{
-  background:#faf6f1;
-  border-radius:10px;
-  padding:1rem;
-  margin-bottom:1.2rem;
-  border-left:4px solid var(--insta);
-  font-size:.95rem;
-  color:#333;
-}
-.share-modal .share-actions{display:flex;gap:.8rem;flex-wrap:wrap}
-.share-modal .share-link{
-  flex:1;
-  min-width:150px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:.4rem;
-  padding:.8rem 1.2rem;
-  border-radius:12px;
-  font-weight:600;
-  font-size:.85rem;
-  cursor:pointer;
-  border:2px solid #e0d6cc;
-  transition:.2s;
-}
-.share-modal .share-link:hover{
-  background:#f9f9f9;
-  border-color:var(--insta)
-}
-.share-modal .share-link.copy{background:var(--insta);color:#fff;border-color:var(--insta)}
-.share-modal .share-link.close{background:#f5f5f5;color:#666}
-.share-modal .close-btn{
-  position:absolute;
-  top:1rem;right:1rem;
-  background:none;
-  border:none;
-  font-size:1.5rem;
-  cursor:pointer;
-  color:#999;
-}
-.share-modal .close-btn:hover{color:#333}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+/* Stats bar */
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:2.5rem}
+.stat-card{background:var(--card);border-radius:14px;padding:1.3rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.stat-card .stat-num{font-size:2rem;font-weight:900;color:var(--red);display:block}
+.stat-card .stat-label{font-size:.78rem;color:#888;text-transform:uppercase;letter-spacing:1px}
 
-footer{text-align:center;padding:2rem 1rem;color:#999;font-size:.8rem;border-top:1px solid #e0d6cc;margin-top:3rem}
-footer strong{color:var(--dark)}
-footer a{color:var(--red)}
+/* Quote */
+.quote-block{background:linear-gradient(135deg,#fef3e2,#fde8e8);border-radius:16px;padding:2rem;text-align:center;margin:2rem 0;border:1px solid #f5d5a0}
+.quote-block blockquote{font-size:1.3rem;font-weight:700;font-style:italic;color:var(--dark);max-width:600px;margin:0 auto}
+.quote-block cite{display:block;margin-top:.8rem;font-size:.85rem;color:#888;font-style:normal}
 
-@media(max-width:640px){
-  header{padding:2.5rem 1rem 2rem}
-  header h1{font-size:1.5rem}
-  .counter-bar{gap:.8rem}
-  main{padding:1.5rem .8rem 2rem}
-  section h2{font-size:1.3rem}
-  .card{padding:1.2rem}
-  .contradiction{padding:1rem}
-  nav ul{gap:.2rem;padding:.4rem .5rem}
-  nav a{padding:.3rem .8rem;font-size:.75rem}
+/* Timeline */
+.timeline{position:relative;padding-left:2rem;margin-top:1rem}
+.timeline::before{content:'';position:absolute;left:.6rem;top:0;bottom:0;width:3px;background:linear-gradient(var(--red),var(--gold))}
+.timeline-item{position:relative;margin-bottom:1.5rem;padding-left:1.5rem}
+.timeline-item::before{content:'';position:absolute;left:-1.65rem;top:.35rem;width:14px;height:14px;background:var(--red);border-radius:50%;border:3px solid var(--bg)}
+.timeline-item .tl-date{font-size:.75rem;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.timeline-item .tl-text{font-size:.95rem;color:#555}
+
+/* Footer */
+footer{background:var(--dark);color:#aaa;text-align:center;padding:2.5rem 1rem;font-size:.85rem;line-height:1.8}
+footer a{color:var(--gold)}
+footer .disclaimer{max-width:720px;margin:1rem auto 0;border-top:1px solid #444;padding-top:1rem}
+
+html{scroll-behavior:smooth}
+
+/* Animations */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.card,.contradiction,.scandal{animation:fadeUp .5s ease-out}
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Mentirómetro do Ventura",
+  "url": "https://mentirometroventura.eu/",
+  "description": "Fact-checking independente de André Ventura e do partido Chega",
+  "inLanguage": "pt"
 }
+</script>
+
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-02-08",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Não há geradores para centros de saúde e lares, mas nas portagens não falha a energia!",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 2, "bestRating": 5, "worstRating": 1, "alternateName": "Falsa Equivalência"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-02"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Portugal tem o segundo IVA mais alto da Europa",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Nos governos em que Seguro participou foi quando mais se acentuou a diferença salarial entre homens e mulheres",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 2, "bestRating": 5, "worstRating": 1, "alternateName": "Enganador"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Preferia que NÃO fosse o Presidente da República a nomear o Procurador-Geral da República",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Contradição Direta"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Há 1,7 milhões de portugueses sem médico de família",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "No Hospital de Santo António já não têm dinheiro para macas, andam a comprar espreguiçadeiras",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 2, "bestRating": 5, "worstRating": 1, "alternateName": "Enganador"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Só 50% das medidas do plano para a saúde estão cumpridas",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Citação falsa de José Mujica a elogiar André Ventura",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Texto falso atribuído a Miguel Esteves Cardoso elogiando André Ventura",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Tivemos em 2023 a maior criminalidade de sempre",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Mais de 80% dos incêndios florestais em Portugal resultam de fogo posto",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Só 302 mil imigrantes é que estão a trabalhar e a descontar para a Segurança Social",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Os ciganos continuam mais de 80% a viver de subsídios. Só 14% é que vivem do seu trabalho",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Os presos ganham mais por hora do que os bombeiros",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2020-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "BE, PS e PCP aprovaram lei que permite saídas da prisão de 45 dias para pedófilos e políticos corruptos",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2020"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2021-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Quatro em oito membros da direção do Chega são mulheres",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2021"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-20",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Citação falsa de Cristiano Ronaldo elogiando André Ventura",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-25",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Documento ultra-secreto do SIED revela operação para prejudicar Ventura nas presidenciais",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-01-15",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Os portugueses emigrantes sempre cumpriram as regras",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 2, "bestRating": 5, "worstRating": 1, "alternateName": "Enganador"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2026-01"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2025-06-01",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "O ministro da Presidência admitiu que podiam entrar 500 a 750 mil imigrantes em Portugal",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 2, "bestRating": 5, "worstRating": 1, "alternateName": "Enganador"},
+    "itemReviewed": {"@type": "Claim", "author": {"@type": "Person", "name": "André Ventura"}, "datePublished": "2025"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ClaimReview",
+    "datePublished": "2026-02-05",
+    "url": "https://mentirometroventura.eu/#fakenews",
+    "claimReviewed": "Ventura ameaçou atacar Angola com apoio da NATO",
+    "author": {"@type": "Organization", "name": "Mentirómetro do Ventura", "url": "https://mentirometroventura.eu/"},
+    "reviewRating": {"@type": "Rating", "ratingValue": 1, "bestRating": 5, "worstRating": 1, "alternateName": "Falso"},
+    "itemReviewed": {"@type": "Claim", "datePublished": "2026-02"}
+  }
+]
+</script>
+
 </style>
 </head>
 <body>
 
 <header>
-  <div class="header-brand">Mentirómetro</div>
-  <h1>Ventura<span>.</span></h1>
-  <p class="subtitle">Fact-checking independente de André Ventura e do partido Chega. Mentiras, contradições e escândalos, documentados e verificados.</p>
+  <div class="header-brand">🔍 Fact-checking independente</div>
+  <h1>O <span>Mentirómetro</span> do Ventura</h1>
+  <p class="subtitle">Porque alguém tem de contar as mentiras que ele não conta. Um serviço público de fact-checking com humor — para que o populismo não passe sem resposta.</p>
   <div class="counter-bar">
-    <div class="counter-item">
-      <span class="num">27</span>
-      <span class="label">Mentiras</span>
-    </div>
-    <div class="counter-item">
-      <span class="num">10</span>
-      <span class="label">Contradições</span>
-    </div>
-    <div class="counter-item">
-      <span class="num">8+</span>
-      <span class="label">Escândalos</span>
-    </div>
+    <div class="counter-item"><span class="num">42</span><span class="label">Items Tracked</span></div>
+    <div class="counter-item"><span class="num">27</span><span class="label">Fake News</span></div>
+    <div class="counter-item"><span class="num">10</span><span class="label">Contradições</span></div>
+    <div class="counter-item"><span class="num">∞</span><span class="label">Lata do Homem</span></div>
   </div>
-  <div class="updated">Last updated: Feb 12, 2026</div>
+  <p class="updated">Última atualização: 8 de fevereiro de 2026</p>
 </header>
 
 <nav>
   <ul>
-    <li><a href="#mentiras">Mentiras</a></li>
-    <li><a href="#contradicoes">Contradições</a></li>
-    <li><a href="#escandalos">Escândalos</a></li>
+    <li><a href="#fakenews">🔥 Fake News</a></li>
+    <li><a href="#contradicoes">🔄 Contradições</a></li>
+    <li><a href="#escandalos">💣 Escândalos</a></li>
+    <li><a href="#timeline">📅 Timeline</a></li>
+    <li><a href="#sobre">ℹ️ Sobre</a></li>
   </ul>
 </nav>
 
 <main>
 
-<!-- MENTIRAS -->
-<section id="mentiras">
-  <h2>🚨 Mentiras Desmascaradas</h2>
-  <p class="section-intro">Afirmações falsas, enganosas, ou francamente inventadas. Com fontes que provam tudo.</p>
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stat-card"><span class="stat-num">27</span><span class="stat-label">Mentiras Expostas</span></div>
+  <div class="stat-card"><span class="stat-num">10</span><span class="stat-label">Contradições Flagrantes</span></div>
+  <div class="stat-card"><span class="stat-num">12+</span><span class="stat-label">Escândalos do Partido</span></div>
+  <div class="stat-card"><span class="stat-num">0</span><span class="stat-label">Pedidos de Desculpa</span></div>
+</div>
+
+<div class="quote-block">
+  <blockquote>"O povo não é estúpido."</blockquote>
+  <cite>— André Ventura, aparentemente a subestimar o povo</cite>
+</div>
+
+<!-- FAKE NEWS -->
+<section id="fakenews">
+  <h2>🔥 Fake News Desmascaradas</h2>
+  <p class="section-intro">Cada afirmação foi verificada por fact-checkers profissionais. Nós só adicionamos o sarcasmo.</p>
+
+  <div class="card">
+    <span class="badge falsa-equivalencia">FALSA EQUIVALÊNCIA</span>
+    <span class="date-tag">Fev 2026</span>
+    <div class="claim">"Não há geradores para centros de saúde e lares, mas nas portagens não falha a energia!"</div>
+    <div class="reality">As portagens funcionam com <strong>sistemas autónomos de energia</strong> — baterias e geradores próprios das concessionárias privadas. Não é uma questão de prioridade governamental. Ventura criou uma falsa equivalência entre infraestruturas públicas e privadas com sistemas de energia completamente diferentes.</div>
+    <div class="commentary">Comparar portagens (com geradores próprios pagos pelas concessionárias) com lares públicos é como reclamar que o vizinho tem piscina e o parque público não. São sistemas diferentes, André.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-queixa-se-de-falta-de-geradores-em-lares-e-ate-hospitais-nas-portagens-nao-falha-a-energia-tem-razao/" target="_blank">Polígrafo — Portagens vs. geradores em lares</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"Portugal tem o segundo IVA mais alto da Europa"</div>
+    <div class="reality">Portugal é o <strong>10º</strong>, não o 2º. À frente estão: Hungria (27%), Finlândia (25,5%), Croácia, Dinamarca e Suécia (25%), Grécia e Irlanda (24%), e outros. O IVA português de 23% é alto — mas inventar rankings não ajuda ninguém, só engana quem não verifica.</div>
+    <div class="commentary">Quando não sabes a matéria mas queres parecer indignado, inventa um ranking. Técnica clássica de populismo 101.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-portugal-tem-o-segundo-iva-mais-alto-da-europa/" target="_blank">Polígrafo</a> / <a href="https://taxfoundation.org/data/all/eu/eu-vat-rates/" target="_blank">Tax Foundation</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge enganador">ENGANADOR</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"Nos governos em que Seguro participou foi quando mais se acentuou a diferença salarial entre homens e mulheres"</div>
+    <div class="reality">A afirmação é <strong>enganadora</strong>. Ignora contexto macroeconómico, a crise financeira, fatores externos e a evolução real dos dados estatísticos. Correlação não é causalidade — e atribuir uma tendência complexa a uma pessoa é desonestidade intelectual básica.</div>
+    <div class="commentary">Pegar em dados soltos e transformá-los numa narrativa de debate presidencial? Chamam-lhe populismo. Ele chama-lhe "dizer verdades incómodas".</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt" target="_blank">Polígrafo — Debate Presidencial 2026</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge hipocrisia">HIPOCRISIA</span>
+    <span class="date-tag">2026</span>
+    <div class="claim">Pedro Frazão (deputado Chega) acusou o PS de gastar 40 mil euros em perfis falsos para manipular redes sociais</div>
+    <div class="reality">A acusação ao PS até tem fundamento — mas o próprio Chega utiliza <strong>exatamente o mesmo método</strong> de promoção com perfis e engagement artificial nas redes sociais. A promoção paga e perfis de apoio existem dos dois lados.</div>
+    <div class="commentary">Acusar os outros daquilo que tu próprio fazes é uma arte milenar. E o Chega é o Picasso desta modalidade. Quem vive em casa de vidro não devia atirar pedras — devia investir em cortinas.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/frazao-diz-que-ps-compra-perfis-falsos-mas-promocao-do-chega-nas-redes-sociais-recorre-ao-mesmo-metodo/" target="_blank">Polígrafo — Perfis falsos: PS e Chega</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge contradicao">CONTRADIÇÃO DIRETA</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"Preferia que NÃO fosse o Presidente da República a nomear o Procurador-Geral da República"</div>
+    <div class="reality">Em <strong>2022</strong>, o próprio Chega apresentou uma proposta formal de revisão constitucional que incluía explicitamente <strong>dar ao Presidente da República o poder de nomear e exonerar o PGR</strong>. Ventura em 2026 contradiz diretamente o que o seu partido defendeu em 2022.</div>
+    <div class="commentary">Ser contra aquilo que tu próprio propuseste há dois anos exige uma flexibilidade ideológica que deveria ser modalidade olímpica. Medalha de ouro para o Chega.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ventura-disse-que-preferia-que-nao-fosse-o-presidente-da-republica-a-nomear-o-pgr-mas-chega-defendeu-essa-ideia-em-2022/" target="_blank">Polígrafo / Lusa — PGR contradição</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"Há 1,7 milhões de portugueses sem médico de família"</div>
+    <div class="reality">Segundo o portal Transparência do SNS, em novembro de 2025 eram <strong>1.557.148</strong> — não 1,7 milhões. Uma diferença de <strong>140 mil pessoas</strong>. O número é alto? É. Mas arredondar para cima 140 mil pessoas é mais do que um erro — é inflação populista de dados.</div>
+    <div class="commentary">Quando os números reais já são maus mas não suficientemente dramáticos para o comício, arredonda-se. Para cima, claro. Ninguém arredonda para baixo numa campanha eleitoral.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-ha-17-milhoes-de-portugueses-sem-medico-de-familia/" target="_blank">Polígrafo — 1,7 milhões sem médico de família</a> / <a href="https://transparencia.sns.gov.pt" target="_blank">SNS Transparência</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge enganador">ENGANADOR</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"No Hospital de Santo António já não têm dinheiro para macas, andam a comprar espreguiçadeiras"</div>
+    <div class="reality">As espreguiçadeiras rígidas fazem parte do <strong>Plano de Catástrofe</strong> do hospital, adquiridas há anos para situações de emergência com múltiplas vítimas simultâneas. <strong>Nunca foram usadas</strong> como substitutas de macas. O hospital esclareceu que dispõe de dezenas de macas vagas. Ventura pegou em fotos descontextualizadas e criou uma narrativa falsa.</div>
+    <div class="commentary">Transformar um plano de emergência contra catástrofes numa notícia sobre hospitais sem macas é arte. A arte de enganar, mas arte na mesma. Banksy da desinformação.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-ha-hospitais-que-nao-tem-dinheiro-para-macas-e-estao-a-comprar-espreguicadeiras/" target="_blank">Polígrafo — Espreguiçadeiras Hospital Santo António</a> / <a href="https://www.ulssa.pt/noticia/esclarecimento" target="_blank">Esclarecimento do Hospital</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">"Só 50% das medidas do plano para a saúde estão cumpridas"</div>
+    <div class="reality">De acordo com o site de monitorização do Plano de Emergência e Transformação na Saúde, <strong>63% das medidas (34 no total) já estão concluídas</strong>. Faltam cumprir 37%, não 50%. Das restantes, 19 estão em curso e apenas 1 está parada. Ventura inflou o incumprimento em mais de um terço.</div>
+    <div class="commentary">Dizer que metade das medidas falhou quando na verdade quase dois terços foram cumpridas — é o equivalente político de reprovar um aluno que teve 63% num teste. Matemática criativa, André.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-so-50-das-medidas-do-plano-para-a-saude-estao-cumpridas/" target="_blank">Polígrafo — Plano de saúde</a> / <a href="https://www.sns.gov.pt/execucao-das-medidas/" target="_blank">SNS — Execução das medidas</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">Citação falsa de José Mujica a elogiar Ventura: "Os portugueses têm neste jovem a inspiração para colocar Portugal num dos melhores países do mundo"</div>
+    <div class="reality">A citação é <strong>completamente fabricada</strong>. José Mujica, ex-presidente do Uruguai e político de esquerda, <strong>nunca disse isto</strong>. Não existe qualquer registo público desta declaração. Mujica, que faleceu em maio de 2025, era ideologicamente nos antípodas do Chega. Trata-se de uma citação apócrifa usada como propaganda nas redes sociais.</div>
+    <div class="commentary">Inventar citações de um presidente de esquerda morto para promover um partido de extrema-direita é um nível de cinismo que até Maquiavel acharia excessivo. Pontos extra pela audácia, zero pela vergonha.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/jose-mujica-disse-que-andre-ventura-e-uma-inspiracao-para-transformar-portugal-num-dos-melhores-paises-do-mundo/" target="_blank">Polígrafo — Citação falsa de Mujica</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">Texto falso atribuído a Miguel Esteves Cardoso: "André Ventura é a pessoa mais verdadeira que está a concorrer"</div>
+    <div class="reality">O escritor Miguel Esteves Cardoso desmentiu ao jornal Público: <strong>"Claro que não fui eu que escrevi"</strong> e que <strong>"jamais poderia ter escrito"</strong> algo do género. Aliás, numa crónica no Público escreveu que "à excepção de Ventura, todos os candidatos são bons". O universo do Ventura funciona com citações inventadas.</div>
+    <div class="commentary">Quando até as celebridades que supostamente te apoiam vêm a público dizer que nunca disseram nada disso, talvez seja altura de repensar a estratégia de comunicação. Ou não — o público-alvo não vai verificar.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-e-a-pessoa-mais-verdadeira-que-esta-a-concorrer-enalteceu-miguel-esteves-cardoso/" target="_blank">Polígrafo — Falsa citação Esteves Cardoso</a> / <a href="https://www.publico.pt/2026/01/20/politica/noticia/miguel-esteves-cardoso-escreveu-texto-elogio-candidatura-presidencial-andre-ventura-falso-2161846" target="_blank">Público</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge hipocrisia">HIPOCRISIA</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">Ventura responsável por 85,7% da desinformação identificada nas presidenciais</div>
+    <div class="reality">Um estudo do Observatório de Desinformação Política analisou quatro semanas de pré-campanha e campanha para as presidenciais de 2026. De <strong>14 casos de desinformação identificados, Ventura foi responsável por 12</strong> — ou seja, 85,7% do total. E depois acusa os outros de desinformação. A ironia escreve-se sozinha.</div>
+    <div class="commentary">Ser o campeão nacional da desinformação enquanto acusas os outros de fazerem fake news é uma proeza de hipocrisia que merece um lugar no Guinness. Ou pelo menos no Mentirômetro.</div>
+    <div class="source"><a href="https://www.publico.pt/2026/01/14/politica/noticia/desinformacao-presidenciais-atinge-77-milhoes-visualizacoes-2161139" target="_blank">Público — Desinformação nas presidenciais</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge hipocrisia">HIPOCRISIA</span>
+    <span class="date-tag">Mai 2025</span>
+    <div class="claim">58% das contas que promovem o Chega no X (Twitter) são falsas</div>
+    <div class="reality">Uma investigação da CNN/TVI revelou que <strong>58% das contas no X que promoviam o Chega eram falsas</strong> — a maior percentagem de todos os partidos. Estas contas promoviam narrativas nacionalistas para melhorar a imagem do Chega enquanto desacreditavam PS e AD. Para contexto, a média de perfis falsos nos comentários dos outros partidos era de 49%.</div>
+    <div class="commentary">O partido que grita "transparência!" tem o maior exército de bots. É como o dono de uma dieta que tem uma conta secreta no Uber Eats. Todos temos os nossos segredos, mas nem todos os gritamos do púlpito.</div>
+    <div class="source"><a href="https://cnnportugal.iol.pt/redes-sociais/chega/investigacao-sao-falsas-58-das-contas-no-x-que-promovem-o-chega/20250516/6826b94fd34e3f0bae9e39ce" target="_blank">CNN Portugal — 58% contas falsas Chega</a></div>
+  </div>
+
+  <!-- === NOVAS ENTRADAS (Fev 2026) === -->
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2025</span>
+    <div class="claim">"Tivemos em 2023 a maior criminalidade de sempre"</div>
+    <div class="reality">Segundo a Direcção-Geral de Política de Justiça, basta recuar a <strong>2013</strong> para encontrar mais crimes. Entre 2001 e 2013, <strong>todos os anos</strong> tiveram mais crimes que 2023. O pior ano de que há registo foi 2008 (431.977 crimes vs. 371.995 em 2023). Ventura transformou o "maior da última década" em "maior de sempre".</div>
+    <div class="commentary">Quando "a maior criminalidade da última década" não assusta o suficiente, promove-se a "de sempre". Inflação não é só nos preços — também se aplica ao medo.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-na-sic-noticias-tivemos-em-2023-a-maior-criminalidade-de-sempre/" target="_blank">Polígrafo — "Maior criminalidade de sempre"</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2025</span>
+    <div class="claim">"Mais de 80% dos incêndios florestais em Portugal resultam de fogo posto"</div>
+    <div class="reality">Segundo o ICNF, em 2024 apenas <strong>35%</strong> dos incêndios investigados foram atribuídos a incendiarismo. A média 2014-2023 foi de <strong>29%</strong>. Mesmo somando negligência (queimadas), chega-se a 65%. Os "mais de 80%" de Ventura são pura ficção estatística.</div>
+    <div class="commentary">Multiplicar a percentagem real por mais de dois é uma habilidade que no mundo académico se chama fraude e no mundo político se chama "dizer verdades inconvenientes".</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-diz-que-mais-de-80-dos-incendios-florestais-em-portugal-resultam-de-fogo-posto-e-verdade/" target="_blank">Polígrafo — 80% fogo posto</a> / <a href="https://www.icnf.pt" target="_blank">ICNF</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2025</span>
+    <div class="claim">"Só 302 mil imigrantes é que estão a trabalhar e a descontar para a Segurança Social"</div>
+    <div class="reality">Os dados da Segurança Social de 2024 indicam <strong>894.825 beneficiários ativos</strong> de nacionalidade estrangeira. O Banco de Portugal reporta <strong>653 mil</strong> trabalhadores estrangeiros por conta de outrem em 2024. Os 302 mil vêm de um estudo da Pordata com critérios diferentes. Ventura escolheu o número mais baixo e generalizou.</div>
+    <div class="commentary">Cherry-picking estatístico: quando tens três números disponíveis, escolhe sempre o que dá mais jeito ao discurso. Os outros dois que se lixem.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/debates-2025-andre-ventura-so-302-mil-imigrantes-e-que-estao-a-trabalhar-e-a-descontar-para-a-seguranca-social/" target="_blank">Polígrafo — 302 mil imigrantes</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2025</span>
+    <div class="claim">"Os ciganos continuam mais de 80% a viver de subsídios. Só 14% é que vivem do seu trabalho"</div>
+    <div class="reality">O INE publicou em 2024 um estudo (ICOT 2023) que mostra que <strong>61,3% da população cigana é ativa</strong> no mercado de trabalho. Quanto ao RSI, apenas <strong>3% a 6%</strong> dos beneficiários são de etnia cigana. Ventura cita um estudo de 2014, ignora dados recentes, e ainda distorce os números do estudo antigo.</div>
+    <div class="commentary">Usar dados de há 10 anos quando existem dados de 2024 é como consultar um mapa de 1990 para usar o GPS. Funciona para quem quer perder-se — ou perder os outros.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-2/" target="_blank">Polígrafo — Comunidade cigana e subsídios</a> / <a href="https://www.ine.pt" target="_blank">INE — ICOT 2023</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2025</span>
+    <div class="claim">"Os presos ganham mais por hora do que os bombeiros"</div>
+    <div class="reality">Os reclusos recebem entre <strong>2,10€ e 3,10€ por dia</strong> (não por hora) em trabalho prisional interno. Os bombeiros voluntários recebem <strong>75€ por 24h</strong> (3,11€/hora), e os sapadores ~7€/hora. Ventura confundiu (ou misturou intencionalmente) dia com hora para fabricar indignação.</div>
+    <div class="commentary">Confundir "por dia" com "por hora" é um erro que até numa aula de matemática do 4º ano seria corrigido. Num debate político, é uma mentira com fins dramáticos.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ventura-diz-que-em-portugal-os-presos-ganham-mais-por-hora-do-que-os-bombeiros-e-verdade/" target="_blank">Polígrafo — Presos vs. bombeiros</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2020</span>
+    <div class="claim">"BE, PS e PCP aprovaram lei que permite saídas da prisão de 45 dias para pedófilos e políticos corruptos"</div>
+    <div class="reality">A lei Covid (Lei 9/2020) <strong>exclui explicitamente</strong> condenados por crimes graves das medidas de libertação. As saídas administrativas extraordinárias são decididas caso a caso pela administração prisional. O Chega distorceu deliberadamente o conteúdo da lei para criar pânico.</div>
+    <div class="commentary">Ler uma lei, interpretar o contrário do que ela diz, e partilhá-la no Facebook com letras garrafais. É o populismo legislativo na sua forma mais pura.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-be-ps-e-pcp-aprovaram-lei-que-permite-saidas-da-prisao-de-45-dias-para-pedofilos-e-politicos-corruptos-verdadeiro-ou-falso/" target="_blank">Polígrafo — Saídas de presos Covid</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">2021</span>
+    <div class="claim">"Quatro em oito membros da direção do Chega são mulheres"</div>
+    <div class="reality">Ventura contou ex-membros que já não faziam parte da Direção Nacional. Após o IV Congresso, Ana Motta Veiga saiu e foi substituída por um homem. A composição real da direção era <strong>maioritariamente masculina</strong>. Ventura inflou números de representação feminina com pessoas que já tinham saído.</div>
+    <div class="commentary">Incluir ex-membros na contagem da direção atual é como incluir ex-namoradas na lista de relações atuais. Tecnicamente já estiveram lá, mas já não contam.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ventura-destaca-que-quatro-em-oito-membros-da-direcao-do-chega-sao-mulheres-verdadeiro-ou-falso/" target="_blank">Polígrafo — Mulheres na direção do Chega</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">Citação falsa de Cristiano Ronaldo: "Convidava-o para almoçar, temos muita coisa em comum"</div>
+    <div class="reality">A citação é <strong>totalmente inventada</strong>, originária de uma conta de paródia no X/Twitter. Ronaldo nunca disse isto sobre Ventura. A conta que publicou produz "conteúdos de paródia" sem indicação visível, enganando quem partilha sem verificar. Ronaldo elogiou Trump, não Ventura.</div>
+    <div class="commentary">Depois de Mujica e Esteves Cardoso, agora é Ronaldo. A fábrica de citações falsas pró-Ventura é mais produtiva que a indústria portuguesa. Falta citar o Papa e o Elon Musk.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ronaldo-disse-que-convidaria-ventura-para-almocar-porque-tem-muita-coisa-em-comum/" target="_blank">Polígrafo — Falsa citação de Ronaldo</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Jan 2026</span>
+    <div class="claim">Documento "ultra-secreto" do SIED revela operação para prejudicar Ventura nas presidenciais</div>
+    <div class="reality">O SIRP confirmou ao Polígrafo que o documento é <strong>completamente falso</strong> e apresentou queixa à Procuradoria-Geral da República. O suposto "Protocolo Aquila 26" é uma fabricação destinada a criar narrativa de vítima e de perseguição estatal. Desinformação de manual.</div>
+    <div class="commentary">Quando perdes uma eleição, há duas opções: aceitar ou inventar uma conspiração dos serviços secretos. O ecossistema Ventura escolheu a segunda. Porque a culpa nunca é do candidato — é sempre do "sistema".</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/fuga-de-documento-ultra-secreto-revela-existencia-de-operacao-que-visa-prejudicar-a-popularidade-de-andre-ventura-enquanto-candidato-as-presidenciais-de-2026/" target="_blank">Polígrafo — Documento falso SIED</a></div>
+  </div>
 
   <div class="card">
     <span class="badge enganador">ENGANADOR</span>
@@ -268,13 +604,7 @@ footer a{color:var(--red)}
     <div class="claim">"Os portugueses emigrantes sempre cumpriram as regras"</div>
     <div class="reality">Segundo o Relatório da Emigração de 2022, havia <strong>1.387 cidadãos portugueses detidos no estrangeiro</strong> — 312 no Reino Unido, 248 em França, 180 em Espanha. A maioria por crimes com estupefacientes (193), seguidos de crimes contra a pessoa e homicídio (34). Os emigrantes portugueses não são todos "exemplares".</div>
     <div class="commentary">Dizer que os emigrantes portugueses "sempre cumpriram as regras" quando há quase 1.400 detidos no estrangeiro é como dizer que o Chega é um partido moderado. Tecnicamente dizível, factualmente risível.</div>
-    <div class="source"><a href="https://poligrafo.sapo.pt/" target="_blank">Polígrafo — Emigrantes cumpridores</a></div>
-    <div class="card-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ventura-diz-que-portugueses-emigrantes-sao-cumpridores-da-lei-mas-e-verdade-que-ha-quase-1-400-detidos-no-estrangeiro/" target="_blank">Polígrafo — Emigrantes cumpridores</a></div>
   </div>
 
   <div class="card">
@@ -283,13 +613,7 @@ footer a{color:var(--red)}
     <div class="claim">Ventura prometeu ser deputado em regime de exclusividade — e acumulou salários de comentador e consultor</div>
     <div class="reality">O manifesto do Chega ("70 Medidas para Reerguer Portugal") defende a <strong>obrigatoriedade da exclusividade</strong> no mandato de deputado. No entanto, Ventura acumulou o salário de deputado com <strong>comentário na CMTV e consultoria fiscal</strong> na Finpartner S.A. Quando confrontado, disse que "não concordava" com o próprio programa.</div>
     <div class="commentary">Escrever "exclusividade obrigatória" no programa do partido e depois acumular três salários é a versão política de "faça o que eu digo, não faça o que eu faço". Pelo menos é coerente na incoerência.</div>
-    <div class="source"><a href="https://poligrafo.sapo.pt/" target="_blank">Polígrafo — Vários salários de Ventura</a></div>
-    <div class="card-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/catarina-martins-andre-ventura-tem-varios-salarios-alem-do-de-deputado-verdadeiro-ou-falso/" target="_blank">Polígrafo — Vários salários de Ventura</a></div>
   </div>
 
   <div class="card">
@@ -298,13 +622,7 @@ footer a{color:var(--red)}
     <div class="claim">Ventura publicou notícia falsa com grafismo da rádio Renascença</div>
     <div class="reality">O líder do Chega partilhou nas redes sociais uma <strong>notícia fabricada</strong> com o logótipo e grafismo da Renascença. Quando questionado pela própria rádio, <strong>não esclareceu a origem</strong> do conteúdo falso. Trata-se de desinformação com uso de marca jornalística sem autorização.</div>
     <div class="commentary">Partilhar fake news com o logo de um meio de comunicação respeitável e depois fingir que nada aconteceu. Nível: "não fui eu, foi o algoritmo".</div>
-    <div class="source"><a href="https://poligrafo.sapo.pt/" target="_blank">Polígrafo — Notícia falsa Renascença</a></div>
-    <div class="card-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <div class="source"><a href="https://poligrafo.sapo.pt" target="_blank">Polígrafo — Notícia falsa Renascença</a></div>
   </div>
 
   <div class="card">
@@ -313,13 +631,25 @@ footer a{color:var(--red)}
     <div class="claim">"O ministro da Presidência admitiu que podiam entrar 500 a 750 mil imigrantes em Portugal"</div>
     <div class="reality">O número <strong>nunca foi avançado pelo Governo</strong> mas sim pelo Correio da Manhã numa notícia de 4 de junho. Ventura atribuiu ao Governo uma projeção jornalística, transformando-a numa "admissão" que nunca existiu. Manipulação de fontes 101.</div>
     <div class="commentary">Pegar numa manchete de jornal e transformá-la em declaração oficial do Governo é uma alquimia que transformaria qualquer título sensacionalista em política de Estado. Perigoso? Um bocado.</div>
-    <div class="source"><a href="https://poligrafo.sapo.pt/" target="_blank">Polígrafo — 500 mil imigrantes</a></div>
-    <div class="card-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-ministro-da-presidencia-admitiu-que-podiam-entrar-500-a-750-mil-imigrantes-em-portugal/" target="_blank">Polígrafo — 500 mil imigrantes</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge falso">FALSO</span>
+    <span class="date-tag">Fev 2026</span>
+    <div class="claim">Ventura ameaçou atacar Angola com apoio da NATO</div>
+    <div class="reality">Circulou nas redes sociais a alegação de que Ventura prometeu atacar Angola com apoio da NATO. Trata-se de conteúdo <strong>fabricado e descontextualizado</strong>. Embora Ventura tenha feito críticas duras a João Lourenço (chamando-o de "ditador"), nunca fez qualquer ameaça militar. A desinformação funciona nos dois sentidos.</div>
+    <div class="commentary">Para ser justo: esta é uma fake news CONTRA Ventura, não dele. Incluímo-la porque a honestidade intelectual é o que nos distingue. Nós verificamos tudo — não só o que nos convém.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/andre-ventura-ameacou-atacar-angola-com-apoio-da-nato-caso-venca-as-eleicoes-em-portugal/" target="_blank">Polígrafo — NATO Angola</a></div>
+  </div>
+
+  <div class="card">
+    <span class="badge enganador">ENGANADOR</span>
+    <span class="date-tag">Fev 2026</span>
+    <div class="claim">Piores resultados de Ventura nas presidenciais foram nas freguesias com mais instrução</div>
+    <div class="reality">Nas 11 freguesias onde <strong>mais de metade da população tem ensino superior</strong>, Ventura obteve entre 14% e 24% — muito abaixo da sua média nacional de 33,19%. Correlação não é causalidade, mas o padrão é consistente e estatisticamente relevante.</div>
+    <div class="commentary">Quanto mais gente lê, menos gente vota Ventura. Não é uma opinião — é uma tabela do INE cruzada com resultados eleitorais. Tirem as vossas conclusões.</div>
+    <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/noite-eleitoral-piores-resultados-de-andre-ventura-aconteceram-nas-freguesias-com-maiores-niveis-de-instrucao/" target="_blank">Polígrafo — Instrução vs. voto Ventura</a></div>
   </div>
 
 </section>
@@ -327,7 +657,7 @@ footer a{color:var(--red)}
 <!-- CONTRADIÇÕES -->
 <section id="contradicoes">
   <h2>🔄 Contradições do Chega</h2>
-  <p class="section-intro">O que dizem vs. o que fazem — porque a coerência é para os fracos.</p>
+  <p class="section-intro">O que dizem vs. o que fazem — porque a coerência é para os fracos e a memória dos eleitores é curta.</p>
 
   <div class="contradiction">
     <div class="said">
@@ -338,12 +668,6 @@ footer a{color:var(--red)}
     <div class="did">
       <h4>📜 O que propôs (2022)</h4>
       <p>O Chega propôs revisão constitucional para <strong>dar ao PR o poder de nomear e exonerar o PGR</strong>.</p>
-    </div>
-    <div class="contradiction-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar nos Stories
-      </button>
     </div>
   </div>
 
@@ -357,12 +681,6 @@ footer a{color:var(--red)}
       <h4>🤫 O que fazem</h4>
       <p>Usam <strong>exatamente o mesmo método</strong> de promoção artificial nas redes sociais.</p>
     </div>
-    <div class="contradiction-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar nos Stories
-      </button>
-    </div>
   </div>
 
   <div class="contradiction">
@@ -375,11 +693,91 @@ footer a{color:var(--red)}
       <h4>🔍 A realidade</h4>
       <p>As portagens têm <strong>geradores próprios privados</strong>. Não é comparável nem é decisão do governo.</p>
     </div>
-    <div class="contradiction-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar nos Stories
-      </button>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que dizem</h4>
+      <p>"Somos o partido da transparência e dos portugueses honestos!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>📰 O que acontece</h4>
+      <p>Múltiplos deputados e dirigentes envolvidos em <strong>escândalos, processos judiciais e expulsões</strong>.</p>
+    </div>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que diz (15 Jan 2026)</h4>
+      <p>"Quero que se lixe Montenegro, eu quero é o povo português!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>🤲 O que faz (18 Jan 2026)</h4>
+      <p>Três dias depois, após passar à 2ª volta, <strong>apela ao apoio de Montenegro</strong> e pede que a direita se una atrás dele.</p>
+    </div>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que diz</h4>
+      <p>"O Iniciativa Liberal votou contra propostas para aumentar as pensões! Querem pobreza!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>🙈 O que faz</h4>
+      <p>O próprio Chega <strong>votou contra a proposta do PS</strong> para converter o suplemento extraordinário das pensões num aumento permanente. Selectividade moral.</p>
+    </div>
+  </div>
+
+  <!-- === NOVAS CONTRADIÇÕES (Fev 2026) === -->
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que defende</h4>
+      <p>"Exclusividade obrigatória para deputados!" (programa do Chega, medida 15)</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>💰 O que faz</h4>
+      <p>Acumulou mandato de deputado com <strong>comentário na CMTV e consultoria fiscal</strong>. Disse que "não concordava" com o programa do próprio partido.</p>
+    </div>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que diz</h4>
+      <p>"Os emigrantes portugueses sempre cumpriram as regras! Sempre foram exemplares!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>📊 Os dados</h4>
+      <p><strong>1.387 portugueses detidos no estrangeiro</strong> (2022), maioria por crimes com estupefacientes e crimes contra a pessoa.</p>
+    </div>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que grita</h4>
+      <p>"Combater a desinformação! Fake news são uma ameaça à democracia!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>📰 O que faz</h4>
+      <p>Partilhou <strong>notícia falsa com grafismo da Renascença</strong> e foi responsável por <strong>85,7% da desinformação</strong> nas presidenciais.</p>
+    </div>
+  </div>
+
+  <div class="contradiction">
+    <div class="said">
+      <h4>🗣️ O que diz (2025)</h4>
+      <p>"O eurodeputado do Chega não apoiou o acordo UE-Mercosul!"</p>
+    </div>
+    <div class="vs">VS</div>
+    <div class="did">
+      <h4>🗳️ O que votou</h4>
+      <p>Mariana Mortágua confrontou Ventura no debate: o eurodeputado do Chega <strong>votou a favor</strong> do acordo no Parlamento Europeu.</p>
     </div>
   </div>
 
@@ -387,340 +785,186 @@ footer a{color:var(--red)}
 
 <!-- ESCÂNDALOS -->
 <section id="escandalos">
-  <h2>💥 Escândalos & Polémicas</h2>
-  <p class="section-intro">Quando a ficção é melhor que a realidade.</p>
+  <h2>💣 Escândalos do Chega</h2>
+  <p class="section-intro">O partido que quer moralizar Portugal tem um currículo interessante. Aqui ficam alguns destaques.</p>
 
   <div class="scandal">
-    <h3>Deputado acusado de racismo no Parlamento</h3>
-    <div class="date">Agosto 2022</div>
-    <p>Um deputado do Chega foi <strong>acusado de fazer comentários racistas</strong> durante uma sessão plenária. A controvérsia levou a críticas internas e externas sobre a cultura do partido.</p>
-    <div class="scandal-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <h3>Deputados fantasma e expulsões em série</h3>
+    <p>Desde a sua fundação, o Chega já expulsou ou viu sair dezenas de deputados, dirigentes e membros. A rotatividade de quadros é tão alta que parece mais um aeroporto do que um partido. Vários deputados abandonaram o partido acusando-o de falta de democracia interna e de ser um "partido de um homem só".</p>
   </div>
 
   <div class="scandal">
-    <h3>Escândalo de financiamento ilegal</h3>
-    <div class="date">Fevereiro 2024</div>
-    <p>Investigação revelou que o Chega recebeu <strong>donativos ilegais</strong> que não foram corretamente declarados. O caso foi escalado para as autoridades competentes.</p>
-    <div class="scandal-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <h3>Financiamento e contas questionáveis</h3>
+    <p>O Chega tem sido alvo de escrutínio sobre o financiamento do partido e de campanhas eleitorais. Questões sobre doações, gastos em redes sociais (incluindo os tais perfis de promoção artificial) e transparência financeira têm sido levantadas por órgãos de comunicação social e pela Entidade das Contas e Financiamentos Políticos.</p>
   </div>
 
   <div class="scandal">
-    <h3>Múltiplos deputados envolvidos em processos judiciais</h3>
-    <div class="date">2023-2025</div>
-    <p>Vários membros do Chega foram alvo de investigações judiciais envolvendo acusações de fraude, peculato e outras ilegalidades. O padrão é preocupante.</p>
-    <div class="scandal-actions">
-      <button class="share-btn" onclick="sharePost(this)">
-        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.5 15c-1.26 0-2.4.5-3.22 1.31l-5.55-3.26c.05-.29.08-.59.08-.9s-.03-.61-.08-.9l5.55-3.26c.81.81 1.96 1.31 3.22 1.31 2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5c0 .31.03.61.08.9L8.7 9.21C7.9 8.5 6.75 8 5.5 8C2.74 8 .5 10.24.5 13s2.24 5 5 5c1.26 0 2.4-.5 3.22-1.31l5.55 3.26c-.05.29-.08.59-.08.9 0 2.76 2.24 5 5 5s5-2.24 5-5-2.24-5-5-5z"/></svg>
-        Partilhar
-      </button>
-    </div>
+    <h3>Racismo e discurso de ódio</h3>
+    <p>Ventura foi condenado pelo Tribunal por declarações discriminatórias contra a comunidade cigana. O partido tem sido repetidamente associado a discurso de ódio e xenofobia, com vários dirigentes locais a partilharem conteúdo extremista nas redes sociais.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Casos judiciais de dirigentes</h3>
+    <p>Vários membros e candidatos do Chega têm sido envolvidos em processos judiciais — desde agressões a fraudes. Para um partido que se apresenta como "anti-corrupção" e "pela lei e ordem", o registo interno é, no mínimo, irónico.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Democracia interna inexistente</h3>
+    <p>Ex-membros do partido, incluindo deputados e fundadores, denunciaram repetidamente a falta de democracia interna. André Ventura controla o partido de forma unipessoal. Alterações estatutárias foram feitas para concentrar poder no líder, transformando o Chega naquilo que críticos chamam de "partido-empresa de um homem só".</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Promessas de demissão não cumpridas</h3>
+    <p>Ventura prometeu publicamente demitir-se se não cumprisse determinados objetivos eleitorais. Não cumpriu os objetivos. Não se demitiu. Surpresa de ninguém. A promessa de demissão tornou-se uma piada recorrente na política portuguesa — talvez a contribuição mais duradoura do Chega para o humor nacional.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Fábrica de citações falsas</h3>
+    <p>Durante a campanha presidencial de 2026, circularam nas redes sociais citações fabricadas de personalidades como José Mujica e Miguel Esteves Cardoso, supostamente elogiando Ventura. Ambas foram desmentidas — Mujica era ideologicamente oposto ao Chega e Esteves Cardoso disse ao Público que "jamais poderia ter escrito" tal coisa. O ecossistema de desinformação à volta do Chega funciona com propaganda no estilo soviético: inventa-se, partilha-se, e quando é desmentido já milhares de pessoas viram.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Campeão da desinformação nas presidenciais 2026</h3>
+    <p>O Observatório de Desinformação Política identificou 14 casos de desinformação durante a campanha presidencial de 2026. André Ventura foi responsável por 85,7% deles — 12 em 14. Os conteúdos atingiram 7,7 milhões de visualizações. Ser o candidato que mais desinforma enquanto acusa os outros de serem "o sistema" é, no mínimo, uma performance artística de hipocrisia.</p>
+  </div>
+
+  <!-- === NOVOS ESCÂNDALOS (Fev 2026) === -->
+
+  <div class="scandal">
+    <h3>Condenação por discriminação da comunidade cigana</h3>
+    <p>Ventura foi <strong>condenado pelo tribunal</strong> a pagar indemnização por declarações discriminatórias contra a comunidade cigana. O líder do partido que se apresenta como "defensor da lei" foi ele próprio condenado pela justiça por violar direitos fundamentais. Propôs ainda um plano de confinamento específico para ciganos durante a Covid — uma medida que até Ricardo Quaresma chamou de racista.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Propostas inconstitucionais assumidas</h3>
+    <p>Mesmo Marques Mendes, candidato de direita, avisou que exigiria "garantias constitucionais" antes de dar posse a um governo do Chega. Porquê? Porque o partido defende abertamente <strong>prisão perpétua e já debateu a pena de morte</strong> — ambas expressamente proibidas pela Constituição (artigos 24.º e 30.º). Um partido que quer governar mas cujas propostas-bandeira são inconstitucionais. O paradoxo anda de mão dada com o populismo.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Mandatário defende que mulheres nas direções são "sinal de degenerescência"</h3>
+    <p>Pedro Arroja, escolhido por Ventura como mandatário nacional do Chega para as legislativas de 2022, escreveu em 2016 que "a ascensão das mulheres nas direções partidárias é um sinal da degenerescência dos partidos" e que "elevar mulheres à direção é enfraquecer o espírito partidário". Ventura disse não conhecer as declarações do homem que ele próprio nomeou. Capacidade de escolha impecável.</p>
+  </div>
+
+  <div class="scandal">
+    <h3>Perdeu as presidenciais nas zonas mais instruídas</h3>
+    <p>Dados do Polígrafo cruzados com o INE mostram que nas 11 freguesias com mais de 50% de licenciados, Ventura ficou consistentemente <strong>10 a 19 pontos abaixo da sua média nacional</strong>. Em Santo António dos Olivais (Coimbra), ficou nos 14,21%. Não é um escândalo — é uma estatística. Mas diz muito.</p>
   </div>
 
 </section>
 
+<!-- TIMELINE -->
+<section id="timeline">
+  <h2>📅 Timeline da Mentira</h2>
+  <p class="section-intro">Uma viagem cronológica pelo maravilhoso mundo da criatividade factual do André Ventura.</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="tl-date">Fevereiro 2026</div>
+      <div class="tl-text"><strong>Portagens vs. Geradores:</strong> Ventura cria falsa equivalência entre portagens (com sistemas autónomos privados) e lares sem energia.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>1,7 milhões sem médico:</strong> Infla o número de portugueses sem médico de família em 140 mil. São 1,56 milhões, não 1,7.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>Espreguiçadeiras-gate:</strong> Acusa hospital de comprar espreguiçadeiras por falta de macas. Eram material do Plano de Catástrofe, nunca usado.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>Plano de saúde "50%":</strong> Diz que só metade das medidas foram cumpridas. Na realidade, 63% estão concluídas.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>"Que se lixe Montenegro":</strong> Insulta o PM — e 3 dias depois pede-lhe apoio para a 2ª volta das presidenciais.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>Citações fabricadas:</strong> Circulam citações falsas de Mujica e Esteves Cardoso a apoiar Ventura. Ambos desmentidos.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>85,7% desinformação:</strong> Observatório identifica Ventura como responsável por quase toda a desinformação da campanha presidencial.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>IVA "2º mais alto":</strong> Afirma que Portugal tem o segundo IVA mais alto da Europa. É o 10º.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>PGR Contradição:</strong> Diz ser contra o PR nomear o PGR — após o Chega ter proposto exatamente isso em 2022.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Janeiro 2026</div>
+      <div class="tl-text"><strong>Diferença salarial:</strong> Atribui a diferença salarial de género a governos de Seguro, ignorando contexto económico e factual.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2025</div>
+      <div class="tl-text"><strong>80% fogo posto:</strong> Ventura diz que mais de 80% dos incêndios são fogo posto. ICNF diz 35%. Diferença: 45 pontos percentuais de criatividade.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2025</div>
+      <div class="tl-text"><strong>302 mil imigrantes:</strong> Diz que só 302 mil imigrantes descontam para a Segurança Social. Dados reais: 894.825 beneficiários ativos estrangeiros.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2025</div>
+      <div class="tl-text"><strong>Presos vs. bombeiros:</strong> Confunde remuneração diária de presos (2-3€/dia) com por hora para alegar que ganham mais que bombeiros. Falso.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2025</div>
+      <div class="tl-text"><strong>Notícia falsa Renascença:</strong> Partilha notícia fabricada com grafismo da Renascença. Questionado, não esclarece a origem.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Maio 2025</div>
+      <div class="tl-text"><strong>58% contas falsas:</strong> Investigação CNN/TVI revela que 58% das contas que promovem o Chega no X são falsas.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2026</div>
+      <div class="tl-text"><strong>Perfis falsos:</strong> Deputado Chega acusa PS de comprar perfis falsos — mas o Chega faz o mesmo.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">Jan 2025</div>
+      <div class="tl-text"><strong>"Maior criminalidade de sempre":</strong> Diz na SIC que 2023 foi o pior ano de sempre. Falso — basta recuar a 2013 para encontrar mais crimes.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2022–2025</div>
+      <div class="tl-text"><strong>Promessas de demissão:</strong> Múltiplas promessas de se demitir se não atingir resultados. Zero demissões.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2021</div>
+      <div class="tl-text"><strong>"4 em 8 mulheres":</strong> Diz que metade da direção são mulheres. Inclui ex-membros que já tinham saído. Falso.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2020</div>
+      <div class="tl-text"><strong>Pedófilos e corruptos:</strong> Acusa PS, BE e PCP de aprovar lei para libertar pedófilos. A lei excluía explicitamente crimes graves.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="tl-date">2020</div>
+      <div class="tl-text"><strong>Exclusividade de deputado:</strong> Programa do Chega defende exclusividade. Ventura acumula com CMTV e consultoria fiscal. Diz que "não concordava".</div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <h2>ℹ️ Sobre Este Projeto</h2>
+  <div class="card" style="border-left-color:var(--gold)">
+    <p>O <strong>Mentirómetro do Ventura</strong> é um projeto de cidadania informada e sátira política. Num país onde o populismo grita mais alto que os factos, alguém tem de tomar notas — e nós tomamos com humor.</p>
+    <p style="margin-top:.8rem">📌 <strong>Todas as informações</strong> aqui apresentadas são baseadas em verificações de <strong>fact-checkers profissionais</strong> (como o Polígrafo), fontes públicas, registos parlamentares e dados oficiais. Não inventamos nada — apenas organizamos o que já foi verificado.</p>
+    <p style="margin-top:.8rem">🎯 <strong>Objetivo:</strong> Combater a desinformação com factos e humor. Porque rir é o melhor remédio — especialmente quando a alternativa é chorar com o estado do populismo português.</p>
+    <p style="margin-top:.8rem">🤝 <strong>Contribuir:</strong> Tens uma mentira do Ventura verificada por fontes credíveis? O Mentirómetro está sempre a recrutar. A realidade nunca para de fornecer material.</p>
+  </div>
+</section>
+
 </main>
 
-<!-- Share Modal -->
-<div class="share-modal" id="shareModal">
-  <div class="share-modal-content">
-    <button class="close-btn" onclick="closeShareModal()">✕</button>
-    <h3>Partilhar nos Stories</h3>
-    
-    <!-- Preview with professional design -->
-    <div style="background:#fff;border-radius:10px;padding:1rem;margin:1.5rem 0;text-align:center;border:1px solid #e0d6cc;overflow:hidden">
-      <p style="font-size:0.75rem;color:#999;margin-bottom:0.8rem;text-transform:uppercase;letter-spacing:1px;font-weight:600">Preview (1080x1920 Stories)</p>
-      <canvas id="shareImagePreview" width="1080" height="1920" style="max-width:100%;border-radius:8px;display:none;background:#000;"></canvas>
-      <div id="previewLoading" style="color:#999;font-size:0.9rem;padding:2rem;">Gerando imagem profissional...</div>
-    </div>
-    
-    <div class="share-actions">
-      <button class="share-link copy" onclick="shareToInstagram()">
-        📱 Abrir no Instagram
-      </button>
-      <button class="share-link copy" onclick="downloadShareImage()">
-        📥 Download PNG
-      </button>
-      <button class="share-link close" onclick="closeShareModal()">
-        Cancelar
-      </button>
-    </div>
-    <p style="font-size:0.8rem;color:#999;margin-top:1rem;text-align:center;">Clica "Abrir no Instagram" para cola direto nos Stories. 🎯</p>
-  </div>
-</div>
-
 <footer>
-  <p><strong>Mentirómetro do Ventura</strong> — Fact-checking independente</p>
-  <p>Temos compromisso com a verdade. Todos os factos são verificados através de <a href="https://poligrafo.sapo.pt/" target="_blank">Polígrafo</a> e outras fontes fidedignas.</p>
-  <p style="margin-top:1rem;font-size:.75rem;">Este site é construído com humor, rigor e um toque de sarcasmo. © 2026</p>
+  <p>🤥 <strong>O Mentirómetro do Ventura</strong> © 2025–2026</p>
+  <p>Um serviço público de sátira política (não financiado pelo Estado, ao contrário de certos partidos)</p>
+  <div class="disclaimer">
+    <p>⚠️ <strong>Aviso legal:</strong> Este site é uma obra de sátira política protegida pela liberdade de expressão. Todas as informações factuais são baseadas em verificações do <a href="https://poligrafo.sapo.pt" target="_blank">Polígrafo</a>, da <a href="https://taxfoundation.org" target="_blank">Tax Foundation</a>, registos parlamentares públicos e fontes jornalísticas credíveis. O tom satírico e as opiniões são nossos. Os factos são da realidade — e ela tem sido generosa.</p>
+  </div>
 </footer>
-
-<script>
-let shareData = {};
-let currentImageDataUrl = null;
-
-function sharePost(btn) {
-  const card = btn.closest('.card, .contradiction, .scandal');
-  
-  let claim = '';
-  let description = '';
-  let badge = '';
-  
-  if (card.classList.contains('card')) {
-    claim = card.querySelector('.claim').textContent.trim();
-    const badgeEl = card.querySelector('.badge');
-    badge = badgeEl ? badgeEl.textContent.trim() : 'FACT-CHECK';
-    
-    // Get reality/description
-    const realityEl = card.querySelector('.reality');
-    if (realityEl) {
-      description = realityEl.textContent.replace('✅ Realidade: ', '').trim();
-      // Limit to first 150 chars
-      if (description.length > 150) {
-        description = description.substring(0, 150) + '...';
-      }
-    }
-  } else if (card.classList.contains('contradiction')) {
-    const said = card.querySelector('.said p').textContent.trim();
-    const did = card.querySelector('.did p').textContent.trim();
-    claim = `${said}\nvs\n${did}`;
-    badge = 'CONTRADIÇÃO';
-    description = 'Clique para ver a contradição completa no Mentirómetro';
-  } else if (card.classList.contains('scandal')) {
-    claim = card.querySelector('h3').textContent.trim();
-    badge = 'ESCÂNDALO';
-    const dateEl = card.querySelector('.date');
-    const p = card.querySelector('p');
-    description = (p ? p.textContent.trim().substring(0, 150) : '') + '...';
-  }
-  
-  shareData = {
-    claim: claim,
-    badge: badge,
-    description: description,
-    url: 'https://mentirometroventura.eu/'
-  };
-  
-  document.getElementById('shareModal').classList.add('active');
-  
-  // Generate image
-  setTimeout(() => generateShareImage(), 100);
-}
-
-function generateShareImage() {
-  const canvas = document.getElementById('shareImagePreview');
-  const ctx = canvas.getContext('2d');
-  const w = 1080;
-  const h = 1920;
-  
-  // Clear canvas
-  ctx.fillStyle = '#1a1a1a';
-  ctx.fillRect(0, 0, w, h);
-  
-  // Gradient background (dark red/black)
-  const gradient = ctx.createLinearGradient(0, 0, w, h);
-  gradient.addColorStop(0, '#2c1a1a');
-  gradient.addColorStop(0.5, '#1a1a1a');
-  gradient.addColorStop(1, '#0d0d0d');
-  ctx.fillStyle = gradient;
-  ctx.fillRect(0, 0, w, h);
-  
-  // Top red accent bar
-  ctx.fillStyle = '#c0392b';
-  ctx.fillRect(0, 0, w, 120);
-  
-  // Badge + logo area
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 48px Montserrat, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('🔍', w/2, 60);
-  
-  // Badge text
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 32px Montserrat, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText(shareData.badge, w/2, 110);
-  
-  // Main claim text
-  const claim = shareData.claim;
-  ctx.fillStyle = '#fff';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  
-  // Smart font sizing
-  let claimFontSize = 100;
-  if (claim.length > 150) claimFontSize = 70;
-  else if (claim.length > 100) claimFontSize = 85;
-  
-  ctx.font = `bold ${claimFontSize}px Montserrat, sans-serif`;
-  
-  // Word wrap for claim
-  const maxWidth = w - 120;
-  const claimWords = claim.split(/\s+/);
-  let claimLines = [];
-  let claimLine = '';
-  
-  for (let i = 0; i < claimWords.length; i++) {
-    const testLine = claimLine + (claimLine ? ' ' : '') + claimWords[i];
-    const metrics = ctx.measureText(testLine);
-    
-    if (metrics.width > maxWidth && claimLine) {
-      claimLines.push(claimLine);
-      claimLine = claimWords[i];
-    } else {
-      claimLine = testLine;
-    }
-  }
-  if (claimLine) claimLines.push(claimLine);
-  
-  // Draw claim lines
-  const claimLineHeight = claimFontSize + 60;
-  const claimTotalHeight = (claimLines.length - 1) * claimLineHeight;
-  let claimStartY = 300 - (claimTotalHeight / 2);
-  
-  claimLines.forEach((l, idx) => {
-    ctx.fillText(l, w/2, claimStartY + idx * claimLineHeight);
-  });
-  
-  // Description text - SMALLER, below the claim
-  const description = shareData.description;
-  ctx.fillStyle = '#aaa';
-  ctx.font = `400 44px Inter, sans-serif`;
-  ctx.textAlign = 'center';
-  ctx.lineWidth = 2;
-  
-  // Word wrap for description
-  const descWords = description.split(/\s+/);
-  let descLines = [];
-  let descLine = '';
-  
-  for (let i = 0; i < descWords.length; i++) {
-    const testLine = descLine + (descLine ? ' ' : '') + descWords[i];
-    const metrics = ctx.measureText(testLine);
-    
-    if (metrics.width > maxWidth - 60 && descLine) {
-      descLines.push(descLine);
-      descLine = descWords[i];
-    } else {
-      descLine = testLine;
-    }
-  }
-  if (descLine) descLines.push(descLine);
-  
-  // Draw description lines
-  const descLineHeight = 60;
-  let descStartY = claimStartY + claimTotalHeight + 120;
-  
-  descLines.forEach((l, idx) => {
-    ctx.fillText(l, w/2, descStartY + idx * descLineHeight);
-  });
-  
-  // Bottom section - website
-  ctx.fillStyle = '#f39c12';
-  ctx.fillRect(0, h - 250, w, 4);
-  
-  ctx.fillStyle = '#f39c12';
-  ctx.font = 'bold 52px Montserrat, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('mentirómetro', w/2, h - 130);
-  
-  ctx.fillStyle = '#999';
-  ctx.font = '32px Inter, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('mentirometroventura.eu', w/2, h - 50);
-  
-  // Save data URL
-  currentImageDataUrl = canvas.toDataURL('image/png');
-  
-  // Show canvas
-  document.getElementById('previewLoading').style.display = 'none';
-  canvas.style.display = 'block';
-}
-
-function shareToInstagram() {
-  if (!currentImageDataUrl) {
-    alert('❌ Imagem não gerada. Tenta de novo.');
-    return;
-  }
-  
-  const canvas = document.getElementById('shareImagePreview');
-  
-  // Close modal immediately
-  closeShareModal();
-  
-  // Copy to clipboard
-  canvas.toBlob(blob => {
-    navigator.clipboard.write([
-      new ClipboardItem({
-        'image/png': blob
-      })
-    ]).then(() => {
-      // Success - show alert
-      alert('✅ Imagem COPIADA!\n\nO Instagram abre agora. Cola (Ctrl+V / Cmd+V) e publica! 🚀');
-    }).catch(() => {
-      alert('⚠️ Erro ao copiar para clipboard.');
-    });
-  }, 'image/png');
-  
-  // Open Instagram IMMEDIATELY (don't wait for clipboard)
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  
-  if (isMobile) {
-    // Mobile: try app first
-    const now = Date.now();
-    const appScheme = /iPhone|iPad|iPod/.test(navigator.userAgent) 
-      ? 'instagram://story-camera' 
-      : 'intent://instagram.com#Intent;scheme=https;package=com.instagram.android;end';
-    
-    window.location.href = appScheme;
-    
-    // If app doesn't open in 2.5s, open web
-    setTimeout(() => {
-      if (Date.now() - now < 3000) {
-        window.location.href = 'https://instagram.com/create';
-      }
-    }, 2500);
-  } else {
-    // Desktop: open web directly
-    window.open('https://instagram.com/create', '_blank');
-  }
-}
-
-function downloadShareImage() {
-  if (!currentImageDataUrl) {
-    alert('❌ Imagem não gerada. Tenta de novo.');
-    return;
-  }
-  
-  const link = document.createElement('a');
-  link.href = currentImageDataUrl;
-  link.download = `mentirometro-${Math.random().toString(36).substr(2, 9)}.png`;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
-
-function closeShareModal() {
-  document.getElementById('shareModal').classList.remove('active');
-}
-
-document.getElementById('shareModal').addEventListener('click', (e) => {
-  if (e.target.id === 'shareModal') {
-    closeShareModal();
-  }
-});
-</script>
 
 </body>
 </html>
