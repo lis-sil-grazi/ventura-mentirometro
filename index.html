@@ -363,123 +363,6 @@ html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
-<script>
-// Generates a professional 1080x1920 Instagram Stories image
-function generateShareImage(title, description) {
-  const canvas = document.createElement('canvas');
-  canvas.width = 1080;
-  canvas.height = 1920;
-  const ctx = canvas.getContext('2d');
-  
-  // Background gradient
-  const grad = ctx.createLinearGradient(0, 0, 1080, 1920);
-  grad.addColorStop(0, '#2c1a1a');
-  grad.addColorStop(0.5, '#1a1a1a');
-  grad.addColorStop(1, '#0d0d0d');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, 1080, 1920);
-  
-  // Top red bar
-  ctx.fillStyle = '#c0392b';
-  ctx.fillRect(0, 0, 1080, 150);
-  
-  // Logo/badge
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 60px Montserrat';
-  ctx.textAlign = 'center';
-  ctx.fillText('🔍', 540, 80);
-  ctx.font = 'bold 40px Montserrat';
-  ctx.fillText('FACT-CHECK', 540, 140);
-  
-  // Main title (HUGE)
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 110px Montserrat';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  
-  // Wrap title
-  const titleLines = wrapText(ctx, title, 150, 'bold 110px Montserrat', 900);
-  let y = 400;
-  titleLines.forEach(line => {
-    ctx.fillText(line, 540, y);
-    y += 150;
-  });
-  
-  // Description (smaller)
-  ctx.fillStyle = '#aaa';
-  ctx.font = '500 50px Inter';
-  const descLines = wrapText(ctx, description, 50, '500 50px Inter', 900);
-  y += 80;
-  descLines.forEach(line => {
-    ctx.fillText(line, 540, y);
-    y += 70;
-  });
-  
-  // Bottom
-  ctx.fillStyle = '#f39c12';
-  ctx.fillRect(0, 1750, 1080, 6);
-  ctx.fillStyle = '#f39c12';
-  ctx.font = 'bold 60px Montserrat';
-  ctx.fillText('mentirómetro', 540, 1850);
-  ctx.fillStyle = '#999';
-  ctx.font = '40px Inter';
-  ctx.fillText('mentirometroventura.eu', 540, 1920);
-  
-  return canvas.toDataURL('image/png');
-}
-
-function wrapText(ctx, text, startX, font, maxWidth) {
-  ctx.font = font;
-  const words = text.split(' ');
-  let lines = [];
-  let line = '';
-  
-  for (const word of words) {
-    const testLine = line + (line ? ' ' : '') + word;
-    const metrics = ctx.measureText(testLine);
-    if (metrics.width > maxWidth && line) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = testLine;
-    }
-  }
-  if (line) lines.push(line);
-  return lines;
-}
-
-function shareToInstagram(title, description) {
-  // Generate image
-  const imageDataUrl = generateShareImage(title, description);
-  
-  // Open image in new window (user can drag from here to Instagram)
-  const imageWindow = window.open('', 'instagram-share', 'width=600,height=1200');
-  imageWindow.document.write(`
-    <!DOCTYPE html>
-    <html>
-    <head>
-      <title>Share to Instagram Stories</title>
-      <style>
-        body { margin: 0; padding: 20px; background: #111; font-family: Arial; color: #fff; text-align: center; }
-        h1 { margin-top: 0; font-size: 20px; }
-        img { max-width: 100%; border-radius: 8px; margin: 20px 0; cursor: grab; }
-        p { font-size: 14px; color: #aaa; line-height: 1.6; }
-        .btn { background: #E4405F; color: #fff; padding: 12px 30px; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-        .btn:hover { background: #d63447; }
-      </style>
-    </head>
-    <body>
-      <h1>📱 Instagram Stories</h1>
-      <img src="${imageDataUrl}" alt="Share image" />
-      <p>Arrasta esta imagem direto para o Instagram Stories<br>(ou copia a imagem com Ctrl+C e cola no Stories com Ctrl+V)</p>
-      <button class="btn" onclick="window.open('https://instagram.com/create', '_blank')">Abrir Instagram Stories</button>
-      <p style="margin-top: 40px; font-size: 12px; color: #666;">Dica: Deixa ambas as janelas abertas side-by-side para arrastares facilmente</p>
-    </body>
-    </html>
-  `);
-  imageWindow.document.close();
-}
-</script>
 
 <header>
   <div class="header-brand">🔍 Fact-checking independente</div>
@@ -722,11 +605,6 @@ function shareToInstagram(title, description) {
     <div class="reality">Segundo o Relatório da Emigração de 2022, havia <strong>1.387 cidadãos portugueses detidos no estrangeiro</strong> — 312 no Reino Unido, 248 em França, 180 em Espanha. A maioria por crimes com estupefacientes (193), seguidos de crimes contra a pessoa e homicídio (34). Os emigrantes portugueses não são todos "exemplares".</div>
     <div class="commentary">Dizer que os emigrantes portugueses "sempre cumpriram as regras" quando há quase 1.400 detidos no estrangeiro é como dizer que o Chega é um partido moderado. Tecnicamente dizível, factualmente risível.</div>
     <div class="source"><a href="https://poligrafo.sapo.pt/fact-check/ventura-diz-que-portugueses-emigrantes-sao-cumpridores-da-lei-mas-e-verdade-que-ha-quase-1-400-detidos-no-estrangeiro/" target="_blank">Polígrafo — Emigrantes cumpridores</a></div>
-    <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0d6cc;">
-      <button onclick="shareToInstagram('Os portugueses emigrantes sempre cumpriram as regras', '1.387 detidos no estrangeiro. Maioria por crimes com drogas e contra a pessoa. Falso.')" style="background: linear-gradient(135deg, #E4405F, #E1306C); color: #fff; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
-        📱 Partilhar no Instagram
-      </button>
-    </div>
   </div>
 
   <div class="card">
@@ -790,11 +668,6 @@ function shareToInstagram(title, description) {
     <div class="did">
       <h4>📜 O que propôs (2022)</h4>
       <p>O Chega propôs revisão constitucional para <strong>dar ao PR o poder de nomear e exonerar o PGR</strong>.</p>
-    </div>
-    <div style="grid-column: 1/-1; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0d6cc;">
-      <button onclick="shareToInstagram('O PR não devia nomear o PGR', 'Em 2022 o Chega propôs dar exatamente esse poder ao PR. Contradição flagrante.')" style="background: linear-gradient(135deg, #E4405F, #E1306C); color: #fff; border: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer;">
-        📱 Partilhar no Instagram
-      </button>
     </div>
   </div>
 
@@ -1092,6 +965,69 @@ function shareToInstagram(title, description) {
     <p>⚠️ <strong>Aviso legal:</strong> Este site é uma obra de sátira política protegida pela liberdade de expressão. Todas as informações factuais são baseadas em verificações do <a href="https://poligrafo.sapo.pt" target="_blank">Polígrafo</a>, da <a href="https://taxfoundation.org" target="_blank">Tax Foundation</a>, registos parlamentares públicos e fontes jornalísticas credíveis. O tom satírico e as opiniões são nossos. Os factos são da realidade — e ela tem sido generosa.</p>
   </div>
 </footer>
+
+<script>
+// Add simple share buttons to all cards on page load
+window.addEventListener('DOMContentLoaded', function() {
+  // Add to regular cards
+  document.querySelectorAll('.card').forEach(card => {
+    if (card.querySelector('[data-share-added]')) return;
+    
+    const claim = card.querySelector('.claim')?.textContent?.trim() || '';
+    if (!claim) return;
+    
+    const btn = document.createElement('button');
+    btn.setAttribute('data-share-added', 'true');
+    btn.innerHTML = '📱 Partilhar no Instagram';
+    btn.style.cssText = `
+      background: linear-gradient(135deg, #E4405F, #E1306C);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      display: inline-block;
+      transition: all 0.2s;
+    `;
+    btn.onmouseover = () => btn.style.transform = 'translateY(-2px)';
+    btn.onmouseout = () => btn.style.transform = 'translateY(0)';
+    btn.onclick = () => window.open('https://instagram.com/create', '_blank');
+    
+    card.appendChild(btn);
+  });
+  
+  // Add to contradictions
+  document.querySelectorAll('.contradiction').forEach(card => {
+    if (card.querySelector('[data-share-added]')) return;
+    
+    const btn = document.createElement('button');
+    btn.setAttribute('data-share-added', 'true');
+    btn.innerHTML = '📱 Partilhar nos Stories';
+    btn.style.cssText = `
+      background: linear-gradient(135deg, #E4405F, #E1306C);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      display: block;
+      width: 100%;
+      transition: all 0.2s;
+    `;
+    btn.onmouseover = () => btn.style.transform = 'translateY(-2px)';
+    btn.onmouseout = () => btn.style.transform = 'translateY(0)';
+    btn.onclick = () => window.open('https://instagram.com/create', '_blank');
+    
+    card.appendChild(btn);
+  });
+});
+</script>
 
 </body>
 </html>
