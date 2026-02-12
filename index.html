@@ -363,6 +363,100 @@ html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
+<script>
+function copyToClipboard(title, description, link) {
+  const text = `"${title}"
+
+❌ ${description}
+
+📌 Verifica: ${link}`;
+  
+  navigator.clipboard.writeText(text).then(() => {
+    alert('✅ Copiado! Cola no WhatsApp ou onde quiseres.');
+  }).catch(() => {
+    // Fallback: manual copy
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert('✅ Copiado! Cola no WhatsApp ou onde quiseres.');
+  });
+}
+
+// Add copy buttons to all cards
+window.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.card').forEach(card => {
+    if (card.querySelector('[data-copy-added]')) return;
+    
+    const claim = card.querySelector('.claim')?.textContent?.trim() || '';
+    const reality = card.querySelector('.reality')?.textContent?.replace('✅ Realidade: ', '')?.trim() || '';
+    
+    if (!claim || !reality) return;
+    
+    const div = document.createElement('div');
+    div.style.cssText = 'margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0d6cc;';
+    div.setAttribute('data-copy-added', 'true');
+    
+    const btn = document.createElement('button');
+    btn.innerHTML = '💬 Copiar para WhatsApp';
+    btn.style.cssText = 'background: #2980b9; color: #fff; border: none; padding: 8px 14px; border-radius: 18px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;';
+    btn.onmouseover = () => { btn.style.background = '#1f618d'; btn.style.transform = 'translateY(-1px)'; };
+    btn.onmouseout = () => { btn.style.background = '#2980b9'; btn.style.transform = 'translateY(0)'; };
+    btn.onclick = () => copyToClipboard(claim, reality, 'https://mentirometroventura.eu/');
+    
+    div.appendChild(btn);
+    card.appendChild(div);
+  });
+  
+  document.querySelectorAll('.contradiction').forEach(card => {
+    if (card.querySelector('[data-copy-added]')) return;
+    
+    const said = card.querySelector('.said p')?.textContent?.trim() || '';
+    const did = card.querySelector('.did p')?.textContent?.trim() || '';
+    
+    if (!said || !did) return;
+    
+    const div = document.createElement('div');
+    div.style.cssText = 'grid-column: 1/-1; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0d6cc;';
+    div.setAttribute('data-copy-added', 'true');
+    
+    const btn = document.createElement('button');
+    btn.innerHTML = '💬 Copiar para WhatsApp';
+    btn.style.cssText = 'background: #2980b9; color: #fff; border: none; padding: 8px 14px; border-radius: 18px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; width: 100%;';
+    btn.onmouseover = () => { btn.style.background = '#1f618d'; btn.style.transform = 'translateY(-1px)'; };
+    btn.onmouseout = () => { btn.style.background = '#2980b9'; btn.style.transform = 'translateY(0)'; };
+    btn.onclick = () => copyToClipboard(`${said} vs ${did}`, 'Contradição flagrante do Chega', 'https://mentirometroventura.eu/');
+    
+    div.appendChild(btn);
+    card.appendChild(div);
+  });
+  
+  document.querySelectorAll('.scandal').forEach(card => {
+    if (card.querySelector('[data-copy-added]')) return;
+    
+    const title = card.querySelector('h3')?.textContent?.trim() || '';
+    const desc = card.querySelector('p')?.textContent?.trim()?.substring(0, 100) || '';
+    
+    if (!title || !desc) return;
+    
+    const div = document.createElement('div');
+    div.style.cssText = 'margin-top: 12px; padding-top: 12px; border-top: 1px solid #e0d6cc;';
+    div.setAttribute('data-copy-added', 'true');
+    
+    const btn = document.createElement('button');
+    btn.innerHTML = '💬 Copiar para WhatsApp';
+    btn.style.cssText = 'background: #2980b9; color: #fff; border: none; padding: 8px 14px; border-radius: 18px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s;';
+    btn.onmouseover = () => { btn.style.background = '#1f618d'; btn.style.transform = 'translateY(-1px)'; };
+    btn.onmouseout = () => { btn.style.background = '#2980b9'; btn.style.transform = 'translateY(0)'; };
+    btn.onclick = () => copyToClipboard(title, desc, 'https://mentirometroventura.eu/');
+    
+    div.appendChild(btn);
+    card.appendChild(div);
+  });
+});
+</script>
 
 <header>
   <div class="header-brand">🔍 Fact-checking independente</div>
