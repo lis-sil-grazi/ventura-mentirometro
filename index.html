@@ -472,25 +472,41 @@ function sharePost(btn) {
   const card = btn.closest('.card, .contradiction, .scandal');
   
   let claim = '';
+  let description = '';
   let badge = '';
   
   if (card.classList.contains('card')) {
     claim = card.querySelector('.claim').textContent.trim();
     const badgeEl = card.querySelector('.badge');
     badge = badgeEl ? badgeEl.textContent.trim() : 'FACT-CHECK';
+    
+    // Get reality/description
+    const realityEl = card.querySelector('.reality');
+    if (realityEl) {
+      description = realityEl.textContent.replace('✅ Realidade: ', '').trim();
+      // Limit to first 150 chars
+      if (description.length > 150) {
+        description = description.substring(0, 150) + '...';
+      }
+    }
   } else if (card.classList.contains('contradiction')) {
     const said = card.querySelector('.said p').textContent.trim();
     const did = card.querySelector('.did p').textContent.trim();
-    claim = `${said} VS ${did}`;
+    claim = `${said}\nvs\n${did}`;
     badge = 'CONTRADIÇÃO';
+    description = 'Clique para ver a contradição completa no Mentirómetro';
   } else if (card.classList.contains('scandal')) {
     claim = card.querySelector('h3').textContent.trim();
     badge = 'ESCÂNDALO';
+    const dateEl = card.querySelector('.date');
+    const p = card.querySelector('p');
+    description = (p ? p.textContent.trim().substring(0, 150) : '') + '...';
   }
   
   shareData = {
     claim: claim,
     badge: badge,
+    description: description,
     url: 'https://mentirometroventura.eu/'
   };
   
@@ -535,62 +551,94 @@ function generateShareImage() {
   ctx.textAlign = 'center';
   ctx.fillText(shareData.badge, w/2, 110);
   
-  // Main claim text - HUGE and fills the space
+  // Main claim text
   const claim = shareData.claim;
   ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   
-  // Smart font sizing based on text length
-  let fontSize = 140;
-  if (claim.length > 100) fontSize = 90;
-  else if (claim.length > 60) fontSize = 110;
+  // Smart font sizing
+  let claimFontSize = 100;
+  if (claim.length > 150) claimFontSize = 70;
+  else if (claim.length > 100) claimFontSize = 85;
   
-  ctx.font = `bold ${fontSize}px Montserrat, sans-serif`;
-  ctx.letterSpacing = '-2px';
+  ctx.font = `bold ${claimFontSize}px Montserrat, sans-serif`;
   
-  // Word wrap for main text
-  const maxWidth = w - 120; // 60px margin on each side
-  const words = claim.split(' ');
-  let lines = [];
-  let line = '';
+  // Word wrap for claim
+  const maxWidth = w - 120;
+  const claimWords = claim.split(/\s+/);
+  let claimLines = [];
+  let claimLine = '';
   
-  for (let i = 0; i < words.length; i++) {
-    const testLine = line + (line ? ' ' : '') + words[i];
+  for (let i = 0; i < claimWords.length; i++) {
+    const testLine = claimLine + (claimLine ? ' ' : '') + claimWords[i];
     const metrics = ctx.measureText(testLine);
     
-    if (metrics.width > maxWidth && line) {
-      lines.push(line);
-      line = words[i];
+    if (metrics.width > maxWidth && claimLine) {
+      claimLines.push(claimLine);
+      claimLine = claimWords[i];
     } else {
-      line = testLine;
+      claimLine = testLine;
     }
   }
-  if (line) lines.push(line);
+  if (claimLine) claimLines.push(claimLine);
   
-  // Draw lines centered vertically in the middle section
-  const lineHeight = fontSize + 40;
-  const totalHeight = (lines.length - 1) * lineHeight;
-  let startY = (h / 2) - (totalHeight / 2);
+  // Draw claim lines
+  const claimLineHeight = claimFontSize + 60;
+  const claimTotalHeight = (claimLines.length - 1) * claimLineHeight;
+  let claimStartY = 300 - (claimTotalHeight / 2);
   
-  lines.forEach((l, idx) => {
-    ctx.fillText(l, w/2, startY + idx * lineHeight);
+  claimLines.forEach((l, idx) => {
+    ctx.fillText(l, w/2, claimStartY + idx * claimLineHeight);
+  });
+  
+  // Description text - SMALLER, below the claim
+  const description = shareData.description;
+  ctx.fillStyle = '#aaa';
+  ctx.font = `400 44px Inter, sans-serif`;
+  ctx.textAlign = 'center';
+  ctx.lineWidth = 2;
+  
+  // Word wrap for description
+  const descWords = description.split(/\s+/);
+  let descLines = [];
+  let descLine = '';
+  
+  for (let i = 0; i < descWords.length; i++) {
+    const testLine = descLine + (descLine ? ' ' : '') + descWords[i];
+    const metrics = ctx.measureText(testLine);
+    
+    if (metrics.width > maxWidth - 60 && descLine) {
+      descLines.push(descLine);
+      descLine = descWords[i];
+    } else {
+      descLine = testLine;
+    }
+  }
+  if (descLine) descLines.push(descLine);
+  
+  // Draw description lines
+  const descLineHeight = 60;
+  let descStartY = claimStartY + claimTotalHeight + 120;
+  
+  descLines.forEach((l, idx) => {
+    ctx.fillText(l, w/2, descStartY + idx * descLineHeight);
   });
   
   // Bottom section - website
   ctx.fillStyle = '#f39c12';
-  ctx.fillRect(0, h - 200, w, 4);
+  ctx.fillRect(0, h - 250, w, 4);
   
   ctx.fillStyle = '#f39c12';
   ctx.font = 'bold 52px Montserrat, sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText('mentirómetro', w/2, h - 100);
+  ctx.fillText('mentirómetro', w/2, h - 130);
   
   ctx.fillStyle = '#999';
   ctx.font = '32px Inter, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('mentirometroventura.eu', w/2, h - 40);
+  ctx.fillText('mentirometroventura.eu', w/2, h - 50);
   
   // Save data URL
   currentImageDataUrl = canvas.toDataURL('image/png');
@@ -606,16 +654,43 @@ function shareToInstagram() {
     return;
   }
   
-  // Convert canvas to blob and create object URL
   const canvas = document.getElementById('shareImagePreview');
   canvas.toBlob(blob => {
-    const url = URL.createObjectURL(blob);
-    
-    // Try Instagram Stories deep link
-    // Note: Instagram Stories doesn't support direct URL scheme on web
-    // Best approach: download the image and let user upload to Stories
-    downloadShareImage();
-    alert('✅ Imagem pronta! Abre Instagram Stories e cola a imagem. 📱');
+    // Copy image to clipboard
+    navigator.clipboard.write([
+      new ClipboardItem({
+        'image/png': blob
+      })
+    ]).then(() => {
+      // Close modal
+      closeShareModal();
+      
+      // Try to open Instagram
+      // Android native intent
+      try {
+        window.location.href = 'intent://instagram.com/create#Intent;scheme=https;package=com.instagram.android;end';
+      } catch (e) {}
+      
+      // iOS scheme
+      try {
+        setTimeout(() => {
+          window.location.href = 'instagram://story-camera';
+        }, 100);
+      } catch (e) {}
+      
+      // Fallback: open web Instagram
+      setTimeout(() => {
+        window.open('https://instagram.com/create', '_blank');
+      }, 500);
+      
+      // Show instructions
+      alert('✅ Imagem copiada!\n\nO Instagram Stories abriu. Cola a imagem (Ctrl+V ou Cmd+V) e publica! 🚀');
+    }).catch(err => {
+      console.error('Clipboard error:', err);
+      // Fallback to download
+      downloadShareImage();
+      alert('⚠️ Não consegui copiar para clipboard. Usa o botão Download e cola manualmente. 📱');
+    });
   }, 'image/png');
 }
 
