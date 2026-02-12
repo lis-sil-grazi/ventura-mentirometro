@@ -655,43 +655,46 @@ function shareToInstagram() {
   }
   
   const canvas = document.getElementById('shareImagePreview');
+  
+  // Close modal immediately
+  closeShareModal();
+  
+  // Copy to clipboard
   canvas.toBlob(blob => {
-    // Copy image to clipboard
     navigator.clipboard.write([
       new ClipboardItem({
         'image/png': blob
       })
     ]).then(() => {
-      // Close modal
-      closeShareModal();
-      
-      // Try to open Instagram
-      // Android native intent
-      try {
-        window.location.href = 'intent://instagram.com/create#Intent;scheme=https;package=com.instagram.android;end';
-      } catch (e) {}
-      
-      // iOS scheme
-      try {
-        setTimeout(() => {
-          window.location.href = 'instagram://story-camera';
-        }, 100);
-      } catch (e) {}
-      
-      // Fallback: open web Instagram
-      setTimeout(() => {
-        window.open('https://instagram.com/create', '_blank');
-      }, 500);
-      
-      // Show instructions
-      alert('✅ Imagem copiada!\n\nO Instagram Stories abriu. Cola a imagem (Ctrl+V ou Cmd+V) e publica! 🚀');
-    }).catch(err => {
-      console.error('Clipboard error:', err);
-      // Fallback to download
-      downloadShareImage();
-      alert('⚠️ Não consegui copiar para clipboard. Usa o botão Download e cola manualmente. 📱');
+      // Success - show alert
+      alert('✅ Imagem COPIADA!\n\nO Instagram abre agora. Cola (Ctrl+V / Cmd+V) e publica! 🚀');
+    }).catch(() => {
+      alert('⚠️ Erro ao copiar para clipboard.');
     });
   }, 'image/png');
+  
+  // Open Instagram IMMEDIATELY (don't wait for clipboard)
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // Mobile: try app first
+    const now = Date.now();
+    const appScheme = /iPhone|iPad|iPod/.test(navigator.userAgent) 
+      ? 'instagram://story-camera' 
+      : 'intent://instagram.com#Intent;scheme=https;package=com.instagram.android;end';
+    
+    window.location.href = appScheme;
+    
+    // If app doesn't open in 2.5s, open web
+    setTimeout(() => {
+      if (Date.now() - now < 3000) {
+        window.location.href = 'https://instagram.com/create';
+      }
+    }, 2500);
+  } else {
+    // Desktop: open web directly
+    window.open('https://instagram.com/create', '_blank');
+  }
 }
 
 function downloadShareImage() {
