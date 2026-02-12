@@ -436,15 +436,26 @@ footer a{color:var(--red)}
     <button class="close-btn" onclick="closeShareModal()">✕</button>
     <h3>Partilhar nos Stories</h3>
     <div class="claim-preview" id="shareClaimPreview"></div>
+    
+    <!-- Preview with logo -->
+    <div style="background:#faf6f1;border-radius:10px;padding:1rem;margin:1rem 0;text-align:center;border:2px dashed #e0d6cc">
+      <p style="font-size:0.75rem;color:#999;margin-bottom:0.5rem;text-transform:uppercase;letter-spacing:1px;">Preview com logo</p>
+      <canvas id="shareImagePreview" width="300" height="300" style="max-width:100%;border-radius:8px;display:none;"></canvas>
+      <div id="previewLoading" style="color:#999;font-size:0.9rem;padding:2rem;">Gerando preview...</div>
+    </div>
+    
     <div class="share-actions">
       <button class="share-link copy" onclick="copyToClipboard()">
-        📋 Copiar para clipboard
+        📋 Copiar texto
+      </button>
+      <button class="share-link copy" onclick="downloadShareImage()">
+        📥 Download imagem
       </button>
       <button class="share-link close" onclick="closeShareModal()">
         Cancelar
       </button>
     </div>
-    <p style="font-size:0.8rem;color:#999;margin-top:1rem;text-align:center;">Cole o texto nos Stories do Instagram e adicione uma imagem ou sticker para maior impacto. 🎯</p>
+    <p style="font-size:0.8rem;color:#999;margin-top:1rem;text-align:center;">Copia o texto OU faz download da imagem com logo. Cola nos Stories. 🎯</p>
   </div>
 </div>
 
@@ -478,6 +489,107 @@ function sharePost(btn) {
   
   document.getElementById('shareClaimPreview').textContent = claim;
   document.getElementById('shareModal').classList.add('active');
+  
+  // Generate preview image
+  setTimeout(() => generateShareImage(), 100);
+}
+
+function generateShareImage() {
+  const canvas = document.getElementById('shareImagePreview');
+  const ctx = canvas.getContext('2d');
+  const claim = shareData.claim;
+  
+  // Background gradient
+  const gradient = ctx.createLinearGradient(0, 0, 300, 300);
+  gradient.addColorStop(0, '#faf6f1');
+  gradient.addColorStop(1, '#f5ede2');
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, 300, 300);
+  
+  // Border
+  ctx.strokeStyle = '#c0392b';
+  ctx.lineWidth = 3;
+  ctx.strokeRect(0, 0, 300, 300);
+  
+  // Logo circle
+  ctx.fillStyle = '#c0392b';
+  ctx.beginPath();
+  ctx.arc(150, 70, 35, 0, Math.PI * 2);
+  ctx.fill();
+  
+  // Logo magnifying glass icon
+  ctx.fillStyle = '#fff';
+  ctx.font = 'bold 40px Arial';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('🔍', 150, 70);
+  
+  // "FACT-CHECK" text above claim
+  ctx.fillStyle = '#c0392b';
+  ctx.font = 'bold 12px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('FACT-CHECK', 150, 120);
+  
+  // Main claim text (wrapped)
+  ctx.fillStyle = '#2c2c2c';
+  ctx.font = 'bold 14px Arial';
+  ctx.textAlign = 'center';
+  
+  // Text wrapping
+  const maxWidth = 260;
+  const lineHeight = 20;
+  let y = 140;
+  
+  if (claim.length > 60) {
+    // Multi-line
+    const words = claim.split(' ');
+    let line = '';
+    for (let i = 0; i < words.length; i++) {
+      const testLine = line + words[i] + ' ';
+      const metrics = ctx.measureText(testLine);
+      if (metrics.width > maxWidth) {
+        if (line) {
+          ctx.fillText(line.trim(), 150, y);
+          y += lineHeight;
+        }
+        line = words[i] + ' ';
+      } else {
+        line = testLine;
+      }
+    }
+    if (line) ctx.fillText(line.trim(), 150, y);
+  } else {
+    ctx.fillText(claim, 150, y);
+  }
+  
+  // Bottom bar
+  ctx.fillStyle = '#f39c12';
+  ctx.fillRect(0, 270, 300, 3);
+  
+  // Website URL
+  ctx.fillStyle = '#999';
+  ctx.font = '10px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText('mentirometroventura.eu', 150, 290);
+  
+  // Show canvas, hide loading
+  document.getElementById('previewLoading').style.display = 'none';
+  canvas.style.display = 'block';
+}
+
+function downloadShareImage() {
+  const canvas = document.getElementById('shareImagePreview');
+  if (!canvas || canvas.style.display === 'none') {
+    alert('❌ Preview não gerado. Tenta de novo.');
+    return;
+  }
+  
+  const link = document.createElement('a');
+  link.href = canvas.toDataURL('image/png');
+  link.download = `mentirometro-${Date.now()}.png`;
+  link.click();
+  
+  alert('✅ Imagem descarregada! Cola agora nos Stories do Instagram.');
 }
 
 function closeShareModal() {
